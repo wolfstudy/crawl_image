@@ -1,0 +1,31 @@
+{
+  "root":"www.google.org",
+  "proxy":{
+    "server":"", /*SOCKS5代理服务器，如果设置成空字符串则不使用代理 127.0.0.1:1080*/
+    "username":"",
+    "password":""
+  },
+  "header":{/*http请求头*/
+    "Host":"www.wallcoo.com",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36",
+    "Referer": "http://www.wallcoo.com/"
+  },
+  "charset":"utf-8", /*可选值utf-8或gbk*/
+  "regex":{
+    "page":[], /*正则表达式，只有符合的页面才会被抓取并解析，空白表示所有页面都抓取*/
+    "imgInPage":["\S+\/\d+x\d+\/\S+"], /*存放正则，指定图片存在于哪些页面*/
+    "href":[ /*匹配页面上的链接*/
+      {
+        "query":"a", /*存放链接的dom选择器*/
+        "attr":"href"
+      }
+    ],
+    "image":[ /*匹配页面上的图片地址*/
+      {
+        "query":"#wallpaper-images img", /*匹配图片的正则表达式*/
+        "attr":"src", /*指定图片地址再正则表达式里的哪个分组，0表示整个表达式匹配的内容，1表示第一个分组*/
+        "folder":"none" /*存放图片的文件夹，可选值url,title,none,正则表达式,文件夹名称*/
+      }
+    ]
+  }
+}
